@@ -14,7 +14,7 @@ body{
     background:rgba(0,0,0,1);
 }
 .logo{
-    width:4.56rem;
+    text-align: center;
     height:1.13rem;
     font-size:1.13rem;
     font-family:PingFangSC-Medium;
