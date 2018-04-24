@@ -130,6 +130,7 @@ html {
 }
 .weui-panel{
     margin-top: 0rem;
+    overflow-y: scroll;
 }
 .weui-cell_link{
     font-size:0.94rem;
@@ -138,7 +139,7 @@ html {
     line-height:0.94rem;
 }
 .weui-cell{
-    height: 3.06rem;
+    height: 2.8rem;
     padding: 0 1rem;
 }
 .weui-cell_access .weui-cell__ft:after{

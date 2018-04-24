@@ -54,6 +54,7 @@ body{
 }
 .cert_button{
     display: block;
+    text-align: center;
     width:16.44rem;
     height:2.25rem;
     background:rgba(91,134,229,1);
@@ -61,6 +62,6 @@ body{
     font-size:0.94rem;
     font-family:PingFangSC-Medium;
     color:rgba(255,255,255,1);
-    line-height:0.94rem; 
+    line-height:2.25rem; 
     margin: 0 auto;
 }

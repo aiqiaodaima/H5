@@ -70,9 +70,46 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
     margin-left: 13.06rem;
 }
 .record_footer{
-    position: relative;
+    position: fixed;
     bottom: 0;
     width:100%;
     height:3.06rem;
     background:rgba(255,255,255,1);
+    display: flex;
+}
+.footer_add{
+    margin-left: 5.38rem;
+}
+.footer_upload{
+    margin-left: 9.31rem;
+}
+.footer_item img{
+    width: 1.69rem;
+    height: 1.69rem;
+}
+.footer_item span{
+    width:1.44rem;
+    height:0.69rem;
+    font-size:0.69rem;
+    font-family:PingFangSC-Regular;
+    color:rgba(51,51,51,1);
+    line-height:0.69rem;
+}
+.actionsheet-item{
+    display: block;
+    position: relative;
+    font-size: 0.875rem;
+    color: #555;
+    height: 3.2rem;
+    line-height: 3.2rem;
+    background-color: #FFF;
+}
+.actionsheet-action {
+    display: block;
+    margin-top: .47rem;
+    font-size: 0.875rem;
+    color: #555;
+    height: 3.2rem;
+    line-height: 3.2rem;
+    background-color: #FFF;
 }
