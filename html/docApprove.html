@@ -34,7 +34,7 @@
                 <span>*</span>
                 <span>您的真实姓名</span>
             </div>
-            <input type="text" placeholder="请输入姓名" class="name_input">
+            <input type="text" placeholder="请输入姓名" class="name_input" id="doc_name">
             <div class="body_title">
                 <span>*</span>
                 <span>出生地</span>
@@ -46,7 +46,7 @@
                         <span>*</span>
                         <span>性别</span>
                     </div>
-                    <select>
+                    <select id="doc_sex">
                         <option selected="selected" disabled="disabled">请选择性别</option>
                         <option>男</option>
                         <option>女</option>
@@ -57,7 +57,7 @@
                         <span>*</span>
                         <span>年龄</span>
                     </div>
-                    <input type="text" placeholder="请输入年龄">
+                    <input type="text" placeholder="请输入年龄" id="doc_age"> 
                 </div>
             </div>
             <div class="two_title">               
@@ -66,7 +66,7 @@
                         <span>*</span>
                         <span>学历</span>
                     </div>
-                    <select>
+                    <select id="education_background">
                         <option selected="selected" disabled="disabled">请选择学历</option>
                         <option>本科</option>
                         <option>硕士</option>
@@ -78,7 +78,7 @@
                         <span>*</span>
                         <span>最高学位</span>
                     </div>
-                    <select>
+                    <select id="highestdegree">
                         <option selected="selected" disabled="disabled">请选择最高学位</option>
                         <option>学士</option>
                         <option>硕士</option>
@@ -90,10 +90,11 @@
                 <span>*</span>
                 <span>最高学位授予院校</span>
             </div>
-            <input type="text" placeholder="请输入最高学位授予院校" class="name_input">
+            <input type="text" placeholder="请输入最高学位授予院校" class="name_input" id="academy">
         </div>
         <div class="submit_button">
-            <a href="docApprove2.html">下一步</a>
+            <!-- <a href="docApprove2.html">下一步</a> -->
+            <a href="javascript:void(0)">下一步</a>
         </div>
     </div>
 </body>
@@ -111,12 +112,52 @@
             $address.citySelect('open');
         });
 
+        let name_object = {};
         $address.on('done.ydui.cityselect', function (ret) {
             /* 省：ret.provance */
             /* 市：ret.city */
             /* 县：ret.area */
             $(this).val(ret.provance + ' ' + ret.city + ' ' + ret.area);
+            name_object.birthplace = ret.provance + ' ' + ret.city + ' ' + ret.area;
         });
+
+        $("#doc_name").on("keyup",function (event) {
+            name_object.name = event.target.value
+        })
+       
+        $("#education_background").blur(function (event) {
+            name_object.education_background = event.target.value
+        })
+        
+        $("#doc_sex").blur(function (event) {
+            name_object.sex = event.target.value
+        })
+        $("#highestdegree").blur(function (event) {
+            name_object.highestdegree = event.target.value
+        })
+        $("#academy").blur(function (event) {
+            name_object.academy = event.target.value
+        })
+        $("#doc_age").on("keyup",function (event) {
+            name_object.age = event.target.value
+        })
+
+        $(".submit_button").on("click",function () {
+            $.ajax({
+                url:"http://192.168.1.58:9966/doctor/insertSelective?",
+                type: "POST",
+                dataType: "text",
+                data:name_object,
+                success:function (res) {
+                    console.log(res)
+                    localStorage.setItem("uid",res);
+                    window.location.href = "docApprove2.html";
+                },
+                error:function(res){
+                    console.log(res)
+                }
+            })
+        })       
     });
 </script>
 </html>
